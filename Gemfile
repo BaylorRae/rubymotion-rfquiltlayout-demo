@@ -7,7 +7,7 @@ gem 'ruby_motion_query'
 #gem 'bubble-wrap' 
 
 # If you use a cocoapod (find them here https://www.cocoacontrols.com)
-#gem 'motion-cocoapods' 
+gem 'motion-cocoapods' 
 
 # ProMotion is a screen system. It works well with RMQ and is a nice wrapper around controllers 
 # I would still use RMQ's stylesheets with ProMotion (not theirs), however
