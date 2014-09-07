@@ -10,7 +10,7 @@ class ImagesController < UICollectionViewController
 
   def self.new(args = {})
     # Set layout
-    layout = UICollectionViewFlowLayout.alloc.init
+    layout = RFQuiltLayout.alloc.init
     self.alloc.initWithCollectionViewLayout(layout)
   end
 
@@ -27,6 +27,10 @@ class ImagesController < UICollectionViewController
       cv.allowsMultipleSelection = false
       rmq(cv).apply_style :collection_view
     end
+
+    layout = collectionView.collectionViewLayout
+    layout.delegate = self
+    layout.blockPixels = CGSizeMake(75, 75)
   end
 
   # Remove if you are only supporting portrait
@@ -44,7 +48,16 @@ class ImagesController < UICollectionViewController
   end
 
   def collectionView(view, numberOfItemsInSection: section)
-    200
+    boxes.length
+  end
+
+  def boxes
+    @boxes ||= 200.times.map do |n|
+      {
+        height: [1,2,3].sample,
+        label: n
+      }
+    end
   end
 
   def collectionView(view, cellForItemAtIndexPath: index_path)
@@ -58,6 +71,17 @@ class ImagesController < UICollectionViewController
   def collectionView(view, didSelectItemAtIndexPath: index_path)
     cell = view.cellForItemAtIndexPath(index_path)
     puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
+  end
+
+  # RFQuiltLayoutDelegate methods
+
+  def blockSizeForItemAtIndexPath(index_path)
+    box = boxes[index_path.row]
+    CGSizeMake(1, box[:height])
+  end
+
+  def insetsForItemAtIndexPath(index_path)
+    UIEdgeInsetsMake(2, 2, 2, 2)
   end
 
 end
