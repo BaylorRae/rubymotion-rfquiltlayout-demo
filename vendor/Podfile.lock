@@ -1,0 +1,10 @@
+PODS:
+  - RFQuiltLayout (1.1.1)
+
+DEPENDENCIES:
+  - RFQuiltLayout (~> 1.1.1)
+
+SPEC CHECKSUMS:
+  RFQuiltLayout: 117596a16f64342be035bc4544ebdcaa2abe761b
+
+COCOAPODS: 0.33.1

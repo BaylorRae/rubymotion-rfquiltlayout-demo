@@ -42,5 +42,8 @@ Motion::Project::App.setup do |app|
   #   pod 'SVProgressHUD'
   #   pod 'JMImageCache'
   # end
+  app.pods do
+    pod 'RFQuiltLayout', '~> 1.1.1'
+  end
  
 end
